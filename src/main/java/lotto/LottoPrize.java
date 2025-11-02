@@ -1,5 +1,8 @@
 package lotto;
 
+import java.util.Arrays;
+import java.util.Optional;
+
 public enum LottoPrize {
     THREE_MATCHES(3, 5000),
     FOUR_MATCHES(4, 50000),
@@ -21,5 +24,11 @@ public enum LottoPrize {
 
     public int getMoney() {
         return money;
+    }
+
+    public static Optional<LottoPrize> getLottoPrizeByMatchCount(int matchCount) {
+        return Arrays.stream(LottoPrize.values())
+                .filter(lottoPrize -> lottoPrize.getMatchCount() == matchCount)
+                .findFirst();
     }
 }
