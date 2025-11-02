@@ -44,7 +44,7 @@ public class ConsoleIO {
     }
 
     private static void printLottoInfo(Lotto lotto) {
-        System.out.println(lotto.toString());
+        System.out.println(lotto.getNumbers().toString());
     }
 
     private static void printStatistic(Entry<LottoPrize, Integer> statistics) {
