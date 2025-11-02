@@ -34,7 +34,7 @@ public class LottoParser {
         if (splitedNumbers.size() != 6) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_SIZE_LOTTO.getMessage());
         }
-        if (isInRangeNumbers(splitedNumbers)) {
+        if (!isInRangeNumbers(splitedNumbers)) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_RANGE_WINNING_NUMBER.getMessage());
         }
         return splitedNumbers;
@@ -44,11 +44,11 @@ public class LottoParser {
         if (isNullOrBlank(input)) {
             throw new IllegalArgumentException(ErrorMessage.NULL_OR_BLANK_INPUT.getMessage());
         }
-        if (isNumber(input)) {
+        if (!isNumber(input)) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_BONUS_NUMBER.getMessage());
         }
         int bonusNumber = Integer.parseInt(input);
-        if (isInRangeNumber(bonusNumber)) {
+        if (!isInRangeNumber(bonusNumber)) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_RANGE_BONUS_NUMBER.getMessage());
         }
         return bonusNumber;
