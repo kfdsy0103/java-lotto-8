@@ -59,13 +59,13 @@ public class LottoMachine {
     }
 
     private double getPercentage(Map<LottoPrize, Integer> statistic, int purchasePrice) {
-        double sum = 0;
+        int sum = 0;
         for (Entry<LottoPrize, Integer> entry : statistic.entrySet()) {
             LottoPrize lottoPrize = entry.getKey();
             Integer count = entry.getValue();
             sum += lottoPrize.getMoney() * count;
         }
-        return (sum + purchasePrice) / purchasePrice;
+        return ((double) (sum - purchasePrice) / purchasePrice) * 100;
     }
 
     private List<Lotto> generateLottos(int count) {
