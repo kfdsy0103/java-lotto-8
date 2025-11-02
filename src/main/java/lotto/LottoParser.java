@@ -17,7 +17,7 @@ public class LottoParser {
         }
         int purchasePrice = Integer.parseInt(input);
         int validPrice = purchasePrice % LottoMachine.LOTTO_PRICE;
-        if (validPrice == 0) {
+        if (validPrice != 0) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_UNIT_PURCHASE_PRICE.getMessage());
         }
         return purchasePrice;
