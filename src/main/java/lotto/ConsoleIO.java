@@ -39,6 +39,10 @@ public class ConsoleIO {
         System.out.printf("총 수익률은 %.2f%%입니다.\n", percentage);
     }
 
+    public static void printErrorMessage(String errorMessage) {
+        System.out.println("[ERROR] " + errorMessage);
+    }
+
     private static void printLottoInfo(Lotto lotto) {
         System.out.println(lotto.toString());
     }
