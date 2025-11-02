@@ -36,7 +36,7 @@ public class ConsoleIO {
         System.out.println("당첨 통계");
         System.out.println("---");
         result.entrySet().forEach(ConsoleIO::printStatistic);
-        System.out.printf("총 수익률은 %.2f%%입니다.\n", percentage);
+        System.out.printf("총 수익률은 %.1f%%입니다.\n", percentage);
     }
 
     public static void printErrorMessage(String errorMessage) {
