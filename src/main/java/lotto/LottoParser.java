@@ -40,6 +40,20 @@ public class LottoParser {
         return splitedNumbers;
     }
 
+    public static int parseBonusNumber(String input) {
+        if (isNullOrBlank(input)) {
+            throw new IllegalArgumentException(ErrorMessage.NULL_OR_BLANK_INPUT.getMessage());
+        }
+        if (isNumber(input)) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_BONUS_NUMBER.getMessage());
+        }
+        int bonusNumber = Integer.parseInt(input);
+        if (isInRangeNumber(bonusNumber)) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_RANGE_BONUS_NUMBER.getMessage());
+        }
+        return bonusNumber;
+    }
+
     private static boolean isNullOrBlank(String input) {
         return input == null || input.isBlank();
     }
