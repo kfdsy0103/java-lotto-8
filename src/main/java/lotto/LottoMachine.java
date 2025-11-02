@@ -2,6 +2,7 @@ package lotto;
 
 import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -44,13 +45,13 @@ public class LottoMachine {
     }
 
     private Map<LottoPrize, Integer> getMatchCountPerLottoPrize(List<LottoPrize> matchedCount) {
-        Map<LottoPrize, Integer> statistic = Map.of(
-                LottoPrize.THREE_MATCHES, 0,
-                LottoPrize.FOUR_MATCHES, 0,
-                LottoPrize.FIVE_MATCHES, 0,
-                LottoPrize.FIVE_BONUS_MATCHES, 0,
-                LottoPrize.SIX_MATCHES, 0
-        );
+        Map<LottoPrize, Integer> statistic = new LinkedHashMap<>(); // 순서 보장
+        statistic.put(LottoPrize.THREE_MATCHES, 0);
+        statistic.put(LottoPrize.FOUR_MATCHES, 0);
+        statistic.put(LottoPrize.FIVE_MATCHES, 0);
+        statistic.put(LottoPrize.FIVE_BONUS_MATCHES, 0);
+        statistic.put(LottoPrize.SIX_MATCHES, 0);
+
         for (LottoPrize lottoPrize : matchedCount) {
             statistic.put(lottoPrize, statistic.get(lottoPrize) + 1);
         }
@@ -58,13 +59,13 @@ public class LottoMachine {
     }
 
     private double getPercentage(Map<LottoPrize, Integer> statistic, int purchasePrice) {
-        int sum = 0;
+        double sum = 0;
         for (Entry<LottoPrize, Integer> entry : statistic.entrySet()) {
             LottoPrize lottoPrize = entry.getKey();
             Integer count = entry.getValue();
             sum += lottoPrize.getMoney() * count;
         }
-        return sum;
+        return (sum + purchasePrice) / purchasePrice;
     }
 
     private List<Lotto> generateLottos(int count) {
