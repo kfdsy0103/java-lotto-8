@@ -16,6 +16,10 @@ public class Lotto {
         if (numbers.size() != 6) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_SIZE_LOTTO.getMessage());
         }
+        Set<Integer> uniqueNumbers = new HashSet<>(numbers);
+        if (uniqueNumbers.size() != 6) {
+            throw new IllegalArgumentException(ErrorMessage.NO_UNIQUE_NUMBER_LOTTO.getMessage());
+        }
     }
 
     public List<Integer> getNumbers() {
