@@ -65,7 +65,7 @@ public class LottoMachine {
             Integer count = entry.getValue();
             sum += lottoPrize.getMoney() * count;
         }
-        return ((double) (sum - purchasePrice) / purchasePrice) * 100;
+        return ((double) sum / purchasePrice) * 100;
     }
 
     private List<Lotto> generateLottos(int count) {
@@ -83,8 +83,8 @@ public class LottoMachine {
 
     private int getPurchasePrice() {
         while (true) {
+            String purchasePriceInput = ConsoleIO.inputPurchasePrice();
             try {
-                String purchasePriceInput = ConsoleIO.inputPurchasePrice();
                 return LottoParser.parsePurchasePrice(purchasePriceInput);
             } catch (Exception e) {
                 ConsoleIO.printErrorMessage(e.getMessage());
@@ -94,8 +94,8 @@ public class LottoMachine {
 
     private List<Integer> getWinningNumber() {
         while (true) {
+            String winningNumberInput = ConsoleIO.inputWinningNumber();
             try {
-                String winningNumberInput = ConsoleIO.inputWinningNumber();
                 return LottoParser.parseWinningNumber(winningNumberInput);
             } catch (Exception e) {
                 ConsoleIO.printErrorMessage(e.getMessage());
@@ -105,8 +105,8 @@ public class LottoMachine {
 
     private int getBonusNumber() {
         while (true) {
+            String bonusNumberInput = ConsoleIO.inputBonusNumber();
             try {
-                String bonusNumberInput = ConsoleIO.inputBonusNumber();
                 return LottoParser.parseBonusNumber(bonusNumberInput);
             } catch (Exception e) {
                 ConsoleIO.printErrorMessage(e.getMessage());
